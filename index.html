@@ -111,7 +111,30 @@
             }
         }
     </style>
-</head>
+</head>    <!-- कंफेटी लाइब्रेरी लोड करना -->
+    <script src="https://jsdelivr.net"></script>
+
+    <script>
+    function celebrateSuccess() {
+        // 1. स्क्रीन पर असली रंग-बिरंगी कंफेटी उड़ाना 🎉
+        confetti({
+            particleCount: 180,
+            spread: 85,
+            origin: { y: 0.6 }
+        });
+
+        // 2. 0.5 सेकंड बाद फोटो वाला पॉप-अप खोलना 📸
+        setTimeout(function() {
+            document.getElementById('photoPopup').style.display = 'flex';
+        }, 500);
+    }
+
+    // पॉप-अप बंद करने का फंक्शन
+    function closePopup() {
+        document.getElementById('photoPopup').style.display = 'none';
+    }
+    </script>
+    
 <body>
 
     <div class="card-container">
@@ -121,7 +144,39 @@
         <p class="message">
            Happy Birthday to my love and future wife! Today is all about celebrating the incredible woman you are. I promise to spend every day making you feel just as special, loved, and adored as you are right now. Cheers to your special day and to the beautiful life we are building together! 🥂💖💕
         </p>
-        <button class="celebrate-btn" onclick="triggerConfetti()">Birthday Celebration of my cutie 🎉</button>
+        <button class="celebrate-btn"        <!-- पुराना बटन हटाकर यह नया बटन और गैलरी पेस्ट करें -->
+        <button class="celebrate-btn" id="celebrateBtn" onclick="celebrateSuccess()">Birthday Celebration of my cutie 🎉</button>
+    </div>
+
+    <!-- 📸 सुंदर फोटो गैलरी (जो बटन दबाने पर खुलेगी) -->
+    <div id="photoPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; overflow-y: auto; padding: 20px;">
+        <div style="background: #fff; padding: 25px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); animation: popupAnim 0.4s ease;">
+            
+            <!-- बंद करने का बटन (X) -->
+            <span onclick="closePopup()" style="position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #ff477e; font-weight: bold;">&times;</span>
+            
+            <h3 style="color: #ff477e; font-family: sans-serif; margin-bottom: 20px; font-size: 22px;">Our Beautiful Memories ✨</h3>
+            
+            <!-- 🖼️ यहाँ अपनी फोटो के नाम बदलें (जैसे pic1.jpg, pic2.jpg जो आपने GitHub पर अपलोड की हैं) -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                <img src="pic1.jpg" alt="Pooja" style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; border: 3px solid #ffe3ec;">
+                <img src="pic2.jpg" alt="Memory 2" style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; border: 3px solid #ffe3ec;">
+                <img src="pic3.jpg" alt="Memory 3" style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; border: 3px solid #ffe3ec;">
+                <img src="pic4.jpg" alt="Memory 4" style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; border: 3px solid #ffe3ec;">
+            </div>
+            
+            <p style="color: #666; font-style: italic; font-size: 14px;">I love you to the moon and back! ❤️</p>
+        </div>
+    </div>
+
+    <!-- पॉप-अप खुलने का सुंदर CSS एनिमेशन -->
+    <style>
+        @keyframes popupAnim {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+ onclick="triggerConfetti()">Birthday Celebration of my cutie 🎉</button>
     </div>
 
     <!-- Canvas-Confetti Script from CDN -->
